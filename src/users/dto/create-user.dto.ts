@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, ArrayUnique } from 'class-validator';
+import { IsString, IsNotEmpty } from 'class-validator';
 
 export class CreateUserDto {
     @IsNotEmpty()
@@ -7,7 +7,6 @@ export class CreateUserDto {
     @IsString()
     readonly name: string;
     @IsNotEmpty()
-    @ArrayUnique()
     @IsString()
     readonly email: string;
     @IsNotEmpty()

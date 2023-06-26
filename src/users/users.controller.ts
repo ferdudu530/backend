@@ -9,8 +9,8 @@ export class UsersController {
     constructor(private readonly UsersService: UsersService, @Inject(REQUEST) private request: Request) {}
 
     @Post()
-    create(@Body() CreateUserDto: CreateUserDto) {
-        return this.UsersService.create(CreateUserDto);
+    create(@Body() createUserDto: CreateUserDto) {
+        return this.UsersService.create(createUserDto);
     }
     @Delete(':id')
     remove(@Param('id') id: string) {

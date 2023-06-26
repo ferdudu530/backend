@@ -13,7 +13,8 @@ export class UsersController {
     // create(@Body() CreateUserDto: CreateUserDto) {
     //     return this.UsersService.create(CreateUserDto);
     // }
-    @Delete(':id')
+    //apple watch
+    @Delete(':id')        
     remove(@Param('id') id: string) {
         return this.UsersService.remove(id);
     }

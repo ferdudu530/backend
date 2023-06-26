@@ -18,8 +18,8 @@ export class UsersController {
         return this.UsersService.remove(id);
     }
     @Patch(':id')
-    update(@Param('id') id: string, @Body() UpdateUserDto: UpdateUserDto) {
-        return this.UsersService.update(id, UpdateUserDto);
+    update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+        return this.UsersService.update(id, updateUserDto);
     }
     @Get(':id')
     findOne(@Param('id') id: number) {

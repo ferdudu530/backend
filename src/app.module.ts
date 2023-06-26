@@ -1,37 +1,35 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from './auth/auth.module';
-import { AuthController } from './auth/auth.controller';
-import { AuthService } from './auth/auth.service';
 
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     UsersModule,
     TypeOrmModule.forRoot({
-      type: 'postgres', // type of our database
-      host: 'localhost', // database host
-      port: 5431, // database host
-      username: 'postgres', // username
-      password: 'pass456', // user password
-      database: 'postgres', // name of our database,
-      autoLoadEntities: true, // models will be loaded automatically 
-      synchronize: true, // your entities will be synced with the database(recommended: disable in prod)
-      // type: 'postgres',
-      // host: process.env.DATABASE_HOST,
-      // port: +process.env.DATABASE_PORT,
-      // username: process.env.DATABASE_USER,
-      // password: process.env.DATABASE_PASSWORD,
-      // database: process.env.DATABASE_NAME,
-      // autoLoadEntities: true,
-      // synchronize: true,
+    //   type: 'postgres', // type of our database
+    //   host: 'localhost', // database host
+    //   port: 5431, // database host
+    //   username: 'postgres', // username
+    //   password: 'pass456', // user password
+    //   database: 'postgres', // name of our database,
+    //   autoLoadEntities: true, // models will be loaded automatically 
+    //   synchronize: true, // your entities will be synced with the database(recommended: disable in prod)
+      type: 'postgres',
+      host: process.env.DATABASE_HOST,
+      port: +process.env.DATABASE_PORT,
+      username: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME,
+      autoLoadEntities: true,
+      synchronize: true,
     }),
-    AuthModule,
   ],
-  controllers: [AppController, AuthController],
-  providers: [AppService, AuthService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
